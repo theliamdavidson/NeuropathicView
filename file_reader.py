@@ -21,6 +21,7 @@ class Patient:
         self.LE_vessels = ["Lower Ex Vessels"]
         self.viscera_vessels = ["Viscera Vessels"]
         self.skin_vessels = ["Skin Vessels"]
+        self.completed_vessel_values = []
              
     def list_creator(self, file_name):
         raw_data = pd.read_excel(file_name,'Raw.donate',header=None)
@@ -46,7 +47,7 @@ class Patient:
     def file_reader(self):
         #patient_name = "Nicole_Davidson"
         date=datetime.datetime.now().strftime("%d-%m-%y_%I-%M")
-        self.file_name='output/'+self.patient_name+"_"+self.test_type+date+'.xlsx'
+        self.file_name='output/'+self.patient_name+"_"+self.test_type+"_"+date+'.xlsx'
         print(self.test_type)
         if self.test_type == "Food":
             shutil.copyfile('excel/Food.xlsx', self.file_name)
@@ -146,6 +147,7 @@ class Patient:
         for index, items in enumerate(self.vs_list):
             if items[0] == self.vessel_storage[0]:
                 self.vs_list[index][2] = self.vessel_storage[1]
+                self.completed_vessel_values.append(self.vessel_storage)
                 self.vessel_storage = [True, [None,None,None,None]]
                 return True
         print("The vessel name does not match any stored values.")
@@ -202,3 +204,7 @@ class Patient:
                 print("new", self.vessel_storage)
                 # STORE THE PREVIOUSLY HELD VALUE ?
                 break
+
+    def monophasic_values(self):
+        self.vessel_storage[1][1] = 1
+        self.vessel_storage[1][3] =.01

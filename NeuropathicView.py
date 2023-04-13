@@ -21,35 +21,11 @@ def index_call(end=False):
                                 num = "None" + ": " + "None", 
                                 test = "Completed",
                                 current_vessel_values = "None")
-def vessel_setter():
-    # ue = ["Upper Extremity Pre"]
-    # le = ["Lower Extremity Pre"]
-    # viscera = ["Upper Extremity Post"]
-    # skin = ["Lower Extremity Post"]
-    # for vessel in food.vessels_for_food_test:
-    #     if vessel in patient_instance.UE_vessels:
-    #         ue.append(vessel)
-    #     elif vessel in patient_instance.LE_vessels:
-    #         le.append(vessel)
-    #     elif vessel[5:] in patient_instance.UE_vessels:
-    #         viscera.append(vessel)
-    #     elif vessel[5:] in patient_instance.LE_vessels:
-    #         skin.append(vessel)
-    return("ue","le","viscera","skin")
                  
 @app.route('/', methods=['POST','GET'])
 def home():
     patient_instance.__init__()
-    # food.__init__()
-    # nvi.__init__()
     return render_template('home.html')
-
-# @app.route('/home', methods=['POST','GET'])
-# def althome():
-#     # patient_instance.__init__()
-#     # food.__init__()
-#     # nvi.__init__()
-#     return render_template('home.html')
 
 @app.route('/landing/', methods=['POST','GET'])
 def first_tasks():    
@@ -60,13 +36,7 @@ def first_tasks():
          
 @app.route('/update_vessel', methods=['POST','GET'])
 def change_current_vessel():  
-    # if patient_instance.test_type == "Food":
-    #     vessel_list = vessel_setter()
-    # else:
-        # ["no","no","no","no"]#
-    vessel_list = patient_instance.vessel_finder()   #[patient_instance.UE_vessels, patient_instance.LE_vessels, \
-        #     patient_instance.viscera_vessels, patient_instance.skin_vessels]
-
+    vessel_list = patient_instance.vessel_finder()  
     return render_template("vessel.html",
                             name=patient_instance.patient_name,
                             #finished_vessel_values=patient_instance.completed_vessel_values,
@@ -76,8 +46,7 @@ def change_current_vessel():
                             skin_vessels = vessel_list[3])
                             
 @app.route('/confirm_vessel', methods=['POST','GET'])
-def confirm_vessel():
-    
+def confirm_vessel(): 
     ves_one = request.form.get("uevessel")
     ves_two = request.form.get("levessel")
     ves_three = request.form.get("visvessel")
@@ -90,22 +59,12 @@ def confirm_vessel():
         vessel_i = ves_three
     elif ves_four is not None:
         vessel_i = ves_four
-    # if patient_instance.test_type == "Food":
-    #     for numbs, name in enumerate(patient_instance.vessels_for_food_test):
-    #         if name == vessel_i:
-    #             patient_instance.food_test_values[patient_instance.vessel_name_index][1] = patient_instance.vessel_value_holder[1]
-    #             patient_instance.vessel_name_index = numbs
-    #             patient_instance.vessel_value_holder = patient_instance.food_test_values[patient_instance.vessel_name_index]
-    #             return(index_call())
     patient_instance.vessel_confirm(vessel_i)
-        
     return(index_call())
 
 @app.route('/confirm_data/', methods=['POST'])
 def confirm_data_response():
-    response = patient_instance.value_holder() 
-    #if response is False:
-        
+    response = patient_instance.value_holder()         
     return(index_call())
 
 @app.route('/read_data/', methods=['POST', 'GET'])
@@ -116,10 +75,6 @@ def read_data_response():
 @app.route('/monophasic_form', methods=['POST', 'GET'])  
 def monophasic():
     response = patient_instance.monophasic_values()
-    # if response is not None:
-    #     done = converter_store()    
-    #     if done is not None:
-    #         return(index_call(True))
     return(index_call())
 
 @app.route('/view_data', methods=['POST','GET'])
@@ -187,10 +142,7 @@ def confirm_value():
     response = patient_instance.completed_vessel_actions()
     if response is None:
         return(index_call())
-    #done = converter_store(response)    
     index_val = False
-    #if done is not None:
-    #    index_val = True
     return(index_call(index_val))
     
 
