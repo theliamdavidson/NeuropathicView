@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Neuropathic View</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+  <body>
+    <div class="screen_content">
+      <header>
+        <div class="header_container">
+          <h1 class="logo">Neuropathic View</h1>
+          <strong><nav>
+            <ul class="menu">
+              <li><a href="{{ url_for('home') }}">New Patient</a></li>
+              <li><a href="{{ url_for('change_current_vessel') }}">Change Vessel</a></li>
+              <li><a href="{{ url_for('read_data_response') }}">Continue Scan</a></li>
+              <li><a href="{{ url_for('view_data') }}">Raw Data</a></li>
+              <li><a href="{{ url_for('results') }}">Results</a></li>
+            </ul>
+          </nav></strong>
+        </div>
+      </header>
+      
+        {% block content %}
+        {% endblock %}
+      
+  </div>
+  </body>
+  
+</html>

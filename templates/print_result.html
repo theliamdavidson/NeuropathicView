@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Page</title>
+    </head>
+    <body>
+        {% extends "layout.html" %}
+        {% block content %}
+        <div class="container">
+            <h1>Patient {{name}}: </h1>
+        <div class="data_content_box">
+            <div class = "data_form">
+                <form method="POST" action="{{ url_for('home') }}">
+                    <input type="submit" value="Start a new Patient">
+                </form>
+                <form method="POST" action="/read_data">
+                    <input type="submit" value="Continue Scan">
+                </form>
+                <div class="value_display">
+                    
+                    <p><b>Print was {{success}}</b></p>
+                    
+                </div>
+            </div>   
+        </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

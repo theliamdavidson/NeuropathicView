@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Page</title>
+    </head>
+    <body>
+        {% extends "layout.html" %}
+        {% block content %}
+        
+            <h1>Patient {{name}}: </h1>
+        <div class="flex-container">
+            <div class = "vessel-group">
+                <b>Options</b>
+                <form method="POST" action="/results/">
+                       
+                <input type="submit" value="View Macro Vessel Results">
+                </form>
+                <form method="POST" action="/read_data">
+                    <input type="submit" value="Continue Scan">
+                </form>                
+            </div>  
+            
+                {% if micro_vessel_results %}
+                <div class="vessel-group">
+                    <b>Recorded Values</b>
+                    {% for vessel in micro_vessel_results%}
+
+                       <p> {{vessel[0]}}: {{vessel[1]}} </p>
+                        
+
+                    {% endfor %}
+                </div>
+                {% endif %}
+ 
+        </div>
+        
+        {% endblock %}
+    </body>
+</html>

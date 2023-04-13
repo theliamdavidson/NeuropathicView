@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Page</title>
+    </head>
+    <body>
+        {% extends "layout.html" %}
+        {% block content %}
+        
+            <h1>Patient {{name}}: </h1>
+            <div class ="flex-container">
+
+                <div class = "left-group">
+                    <form method="post" action="{{url_for('confirm_vessel')}}">
+                        <select id="uevessel" name="uevessel" onchange="this.form.submit()">
+                            {% for vessel in UE_vessels%}
+                            <option value= "{{vessel}}">{{vessel}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
+
+                    <form method="post" action="{{url_for('confirm_vessel')}}">
+                        <select id="levessel" name="levessel" onchange="this.form.submit()">
+                            {% for vessel in LE_vessels%}
+                            <option value= "{{vessel}}">{{vessel}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
+
+                    <form method="post" action="{{url_for('confirm_vessel')}}">
+                        <select id="visvessel" name="visvessel" onchange="this.form.submit()">
+                            {% for vessel in viscera_vessels%}
+                            <option value= "{{vessel}}">{{vessel}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
+
+                    <form method="post" action="{{url_for('confirm_vessel')}}">
+                        <select id="skinvessel" name="skinvessel" onchange="this.form.submit()">
+                            {% for vessel in skin_vessels%}
+                            <option value= "{{vessel}}">{{vessel}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
+                </div>
+                
+                {% if finished_vessel_values %}
+                <div class = "mid-group"></div>
+                <div class = "right-group">
+                    Finished Vessels
+                    <div class="vessel-display">
+                       {% for vessels in finished_vessel_values%}
+                            <p><b>{{vessels}}</b></p>
+                        {% endfor %}                   
+                    </div>
+                </div>
+                {% endif %}
+                
+                
+        </div>
+        
+        {% endblock %}
+    </body>
+</html>

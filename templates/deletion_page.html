@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Page</title>
+    </head>
+    <body>
+        {% extends "layout.html" %}
+        {% block content %}
+        
+            <h1>Deletion Menu:</h1>
+            <h3>These Changes are Permanent</h3>
+            <div class ="flex-container">
+
+                <div class = "left-group">
+                    <form method="post" action="{{url_for('confirm_value')}}">
+                        <select id="new_value" name="new_value" onchange="this.form.submit()">
+                            {% for values in potential_vals%}
+                            <option value= "{{values}}">{{values}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
+                    <form method="POST" action="/confirm_delete">
+                            
+
+                        <input type="submit" value="Delete Current Values">
+                      </form>
+                </div>
+                <div class = "mid-group">
+                    
+                </div>
+                <div class = "right-group">
+                    <a href="{{ url_for('change_current_vessel') }}">
+                        <div class = "vessel-name-num">
+                            <p><b>Vessel: {{selected_vessel}}</b></p>
+                            <p><b>{{num}}</b></p>
+                        </div>
+                    </a>
+
+                    {% if current_vessel_values %}
+                    
+                    <div class="num-display">
+                        <p>PI Upper: <b>{{current_vessel_values[0]}}</b></p>
+                        <p>PI Lower: <b>{{current_vessel_values[1]}}</b></p>
+                        <p>VF Upper: <b>{{current_vessel_values[2]}}</b></p>
+                        <p>VF Lower: <b>{{current_vessel_values[3]}}</b></p>
+                    </div>
+                    
+                    {% endif %}
+                </div>
+                
+        </div>
+        
+        {% endblock %}
+    </body>
+</html>

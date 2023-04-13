@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>My Page</title>
+    </head>
+    <body>
+        {% extends "layout.html" %}
+        {% block content %}
+        
+            <h1>Patient {{name}}: </h1>
+        <div class="data_content_box">
+            <div class = "data_form">
+                <form method="POST" action="/print_data/"> 
+                <input type="submit" value="Save the data to a csv">
+                </form>
+                <form method="POST" action="/read_data">
+                    <input type="submit" value="Continue Scan">
+                </form>
+                {% if macro_vessel_values %}
+                <div class="value_display">
+                    {% for vessel in macro_vessel_values%}
+                    <p><b>{{vessel}}</b></p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>   
+        </div>
+        
+        {% endblock %}
+    </body>
+</html>
