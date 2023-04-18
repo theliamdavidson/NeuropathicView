@@ -121,7 +121,21 @@ class Patient:
     def value_hunter(self):
         found_value = capture_decoder()
         self.data_type = found_value[0]
-        self.found_value = found_value[1]
+        if self.data_type == "PI":
+            try:
+                print("found before edits",found_value[1])
+                if int(found_value[1]) > 999:
+                    self.found_value = found_value[1][:2] + '.' + found_value[1][2:]
+                    print("found after quad digit edits",self.found_value)
+                elif int(found_value[1]) > 99:
+                    self.found_value = found_value[1][:1] + '.' + found_value[1][1:]
+                    print("found after triple digit edits",self.found_value)
+            except ValueError:
+                self.found_value = found_value[1]
+                print("broke out")
+                #found_value = found_value[1]
+        else:
+            self.found_value = found_value[1]
         return found_value[1]
     
     def value_holder(self):

@@ -83,10 +83,10 @@ def capture_decoder():
                 return(capture_decoder_return)
             else:
                 print(split_txt)
-                return(["vessel not found", "0.00"])            
+                return(["value not found", "0.00"])            
                 # thinking about changing how the blank return is formatted
 
 
 if __name__ == "__main__":
     while True:
-        print("return_val = ", capture_decoder(True))
+        print("return_val = ", capture_decoder())
