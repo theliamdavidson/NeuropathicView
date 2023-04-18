@@ -20,6 +20,10 @@
                             {% endfor %}                       
                         </select>
                     </form>
+                    <form method="post" action="{{url_for('confirm_value')}}">
+                        <input type="text"  id="new_value" name="new_value">                 
+                        <input type="submit" value="Enter New Value">
+                    </form>
                     <form method="POST" action="/confirm_delete">
                             
 

@@ -12355,3 +12355,300 @@ TAPV -10.1 cm/s a
 
 2023-04-18 09:08:05,302 127.0.0.1 - - [18/Apr/2023 09:08:05] "POST /read_data/ HTTP/1.1" 200 -
 2023-04-18 09:08:05,321 127.0.0.1 - - [18/Apr/2023 09:08:05] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:23:31,264 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.7:5000
+2023-04-18 10:23:31,264 [33mPress CTRL+C to quit[0m
+2023-04-18 10:24:38,552 127.0.0.1 - - [18/Apr/2023 10:24:38] "GET /delete_last HTTP/1.1" 200 -
+2023-04-18 10:24:38,605 127.0.0.1 - - [18/Apr/2023 10:24:38] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:38:57,104 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.7:5000
+2023-04-18 10:38:57,105 [33mPress CTRL+C to quit[0m
+2023-04-18 10:39:07,415 127.0.0.1 - - [18/Apr/2023 10:39:07] "GET / HTTP/1.1" 200 -
+2023-04-18 10:39:07,469 127.0.0.1 - - [18/Apr/2023 10:39:07] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:39:09,546 127.0.0.1 - - [18/Apr/2023 10:39:09] "[32mPOST /landing HTTP/1.1[0m" 308 -
+2023-04-18 10:39:11,108 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:39:11,123 127.0.0.1 - - [18/Apr/2023 10:39:11] "POST /landing/ HTTP/1.1" 200 -
+2023-04-18 10:39:11,143 127.0.0.1 - - [18/Apr/2023 10:39:11] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:39:14,178 127.0.0.1 - - [18/Apr/2023 10:39:14] "GET /delete_last HTTP/1.1" 200 -
+2023-04-18 10:39:14,197 127.0.0.1 - - [18/Apr/2023 10:39:14] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:39:22,016 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:39:22,018 127.0.0.1 - - [18/Apr/2023 10:39:22] "POST /confirm_value/ HTTP/1.1" 200 -
+2023-04-18 10:39:22,046 127.0.0.1 - - [18/Apr/2023 10:39:22] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:00,194 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.7:5000
+2023-04-18 10:45:00,194 [33mPress CTRL+C to quit[0m
+2023-04-18 10:45:22,316 127.0.0.1 - - [18/Apr/2023 10:45:22] "[32mPOST /confirm_data HTTP/1.1[0m" 308 -
+2023-04-18 10:45:23,288 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:23,308 127.0.0.1 - - [18/Apr/2023 10:45:23] "POST /confirm_data/ HTTP/1.1" 200 -
+2023-04-18 10:45:23,365 127.0.0.1 - - [18/Apr/2023 10:45:23] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:26,413 127.0.0.1 - - [18/Apr/2023 10:45:26] "GET / HTTP/1.1" 200 -
+2023-04-18 10:45:26,430 127.0.0.1 - - [18/Apr/2023 10:45:26] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:29,110 127.0.0.1 - - [18/Apr/2023 10:45:29] "[32mPOST /landing HTTP/1.1[0m" 308 -
+2023-04-18 10:45:30,479 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:30,481 127.0.0.1 - - [18/Apr/2023 10:45:30] "POST /landing/ HTTP/1.1" 200 -
+2023-04-18 10:45:30,500 127.0.0.1 - - [18/Apr/2023 10:45:30] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:31,869 127.0.0.1 - - [18/Apr/2023 10:45:31] "[32mPOST /confirm_data HTTP/1.1[0m" 308 -
+2023-04-18 10:45:32,645 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:32,647 127.0.0.1 - - [18/Apr/2023 10:45:32] "POST /confirm_data/ HTTP/1.1" 200 -
+2023-04-18 10:45:32,665 127.0.0.1 - - [18/Apr/2023 10:45:32] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:34,324 127.0.0.1 - - [18/Apr/2023 10:45:34] "GET /delete_last HTTP/1.1" 200 -
+2023-04-18 10:45:34,340 127.0.0.1 - - [18/Apr/2023 10:45:34] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:43,925 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:43,927 127.0.0.1 - - [18/Apr/2023 10:45:43] "POST /confirm_value/ HTTP/1.1" 200 -
+2023-04-18 10:45:43,948 127.0.0.1 - - [18/Apr/2023 10:45:43] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:49,024 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:49,026 127.0.0.1 - - [18/Apr/2023 10:45:49] "POST /monophasic_form HTTP/1.1" 200 -
+2023-04-18 10:45:49,043 127.0.0.1 - - [18/Apr/2023 10:45:49] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:51,616 127.0.0.1 - - [18/Apr/2023 10:45:51] "[32mPOST /read_data HTTP/1.1[0m" 308 -
+2023-04-18 10:45:52,392 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:52,394 127.0.0.1 - - [18/Apr/2023 10:45:52] "POST /read_data/ HTTP/1.1" 200 -
+2023-04-18 10:45:52,414 127.0.0.1 - - [18/Apr/2023 10:45:52] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:53,202 127.0.0.1 - - [18/Apr/2023 10:45:53] "[32mPOST /confirm_data HTTP/1.1[0m" 308 -
+2023-04-18 10:45:53,960 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:53,962 127.0.0.1 - - [18/Apr/2023 10:45:53] "POST /confirm_data/ HTTP/1.1" 200 -
+2023-04-18 10:45:53,981 127.0.0.1 - - [18/Apr/2023 10:45:53] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:56,853 127.0.0.1 - - [18/Apr/2023 10:45:56] "[32mPOST /confirm_data HTTP/1.1[0m" 308 -
+2023-04-18 10:45:57,626 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:57,628 127.0.0.1 - - [18/Apr/2023 10:45:57] "POST /confirm_data/ HTTP/1.1" 200 -
+2023-04-18 10:45:57,645 127.0.0.1 - - [18/Apr/2023 10:45:57] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:45:58,959 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:45:58,961 127.0.0.1 - - [18/Apr/2023 10:45:58] "POST /monophasic_form HTTP/1.1" 200 -
+2023-04-18 10:45:58,979 127.0.0.1 - - [18/Apr/2023 10:45:58] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-04-18 10:46:00,993 127.0.0.1 - - [18/Apr/2023 10:46:00] "[32mPOST /confirm_data HTTP/1.1[0m" 308 -
+2023-04-18 10:46:01,758 ‘M2M3-
+
+128.9
+
+PSV 124 cm/s]
+
+EDV 0.000 cm/s
+
+MDV 41.6 omis
+
+RI 1.00 |
+PI 21.23
+
+TAPV 7.80 cm/s i
+
+289
+
+- emis
+
+
+2023-04-18 10:46:01,760 127.0.0.1 - - [18/Apr/2023 10:46:01] "POST /confirm_data/ HTTP/1.1" 200 -
+2023-04-18 10:46:01,777 127.0.0.1 - - [18/Apr/2023 10:46:01] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
