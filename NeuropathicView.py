@@ -134,12 +134,12 @@ def confirm_value():
     to_iterate = [0,2,1,3]
     value_to_save = request.form.get("new_value")
     for index in range(4):
-        value = patient_instance.vessel_value_holder[1][to_iterate[index]]
+        value = patient_instance.vessel_storage[1][to_iterate[index]]
         if value is None:
-            patient_instance.vessel_value_holder[1][to_iterate[index]]=value_to_save
+            patient_instance. vessel_storage[1][to_iterate[index]]=value_to_save
             break
     print("values",value)
-    response = patient_instance.completed_vessel_actions()
+    response = patient_instance.completion_checker()
     if response is None:
         return(index_call())
     index_val = False
