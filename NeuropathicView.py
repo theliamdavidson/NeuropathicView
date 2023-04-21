@@ -130,6 +130,7 @@ def delete_recent():
                             current_vessel_values = selected_vessel[1]))    
 
 @app.route('/confirm_value/', methods=['POST', 'GET'])
+
 def confirm_value():
     to_iterate = [0,2,1,3]
     value_to_save = request.form.get("new_value")

@@ -45,7 +45,6 @@ class Patient:
         return return_list
         
     def file_reader(self):
-        #patient_name = "Nicole_Davidson"
         date=datetime.datetime.now().strftime("%d-%m-%y_%I-%M")
         self.file_name='output/'+self.patient_name+"_"+self.test_type+"_"+date+'.xlsx'
         print(self.test_type)
@@ -127,9 +126,13 @@ class Patient:
                 if int(found_value[1]) > 999:
                     self.found_value = found_value[1][:2] + '.' + found_value[1][2:]
                     print("found after quad digit edits",self.found_value)
+                    #--------------------------------------------------------------
+                    return self.found_value
                 elif int(found_value[1]) > 99:
                     self.found_value = found_value[1][:1] + '.' + found_value[1][1:]
                     print("found after triple digit edits",self.found_value)
+                    #--------------------------------------------------------------
+                    return self.found_value
             except ValueError:
                 self.found_value = found_value[1]
                 print("broke out")
