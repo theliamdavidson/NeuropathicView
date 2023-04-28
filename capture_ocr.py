@@ -4,7 +4,7 @@ from PIL import Image
 import logging
 from random import randint
 
-DEBUG = False
+DEBUG = True
 
 def capture_from_image():
     cap = cv.VideoCapture(0)
