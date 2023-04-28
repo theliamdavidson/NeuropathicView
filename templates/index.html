@@ -12,14 +12,14 @@
             <div class ="flex-container">
 
                 <div class = "left-group">
-                    <form method="POST" action="/confirm_data">
-                        <input type="submit" value="Confirm Value">
+                    <form id="confirm" method="POST" action="/confirm_data">
+                        <input id="confirm_value" type="submit" value="Confirm Value">
                     </form>
                     <form method="POST" action="/read_data">
-                        <input type="submit" value="Reload Value">
+                        <input id="redo_value" type="submit" value="Reload Value">
                     </form>
                     <form method="POST" action="/monophasic_form">
-                        <input type="submit" value="Monophasic Wave Form">
+                        <input id="flat_reading" type="submit" value="Monophasic Wave Form">
                     </form>
                 </div>
                 <div class = "mid-group"></div>
@@ -45,7 +45,32 @@
                 </div>
                 
         </div>
+        <script>
+            document.addEventListener("keydown", function(event) {
+              if (event.key === "l") {
+                document.getElementById("confirm_value").click();
+              }
+            });
+            document.addEventListener("keydown", function(event) {
+              if (event.key === "k") {
+                document.getElementById("redo_value").click();
+              }
+            });
+            document.addEventListener("keydown", function(event) {
+              if (event.key === "j") {
+                document.getElementById("flat_reading").click();
+              }
+            });
+            document.addEventListener("keydown", function(event) {
+              if (event.key === "k") {
+                document.getElementById("redo_value").click();
+              }
+            });
+        </script>
+
         
         {% endblock %}
+
+      
     </body>
 </html>
