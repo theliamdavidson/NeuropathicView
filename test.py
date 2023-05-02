@@ -24,7 +24,7 @@ for i in range(len(long_list)):
             vs_list.append([long_list[i][j],[i,j]])
         except TypeError:
             pass
-for i in range(len(vs_list)):
+for i in range(len(vs_list)): #
     for index, vessels in enumerate(vs_list):
         if vessels[1][1] == i:
             print(vessels[0])

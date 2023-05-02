@@ -25,7 +25,7 @@ with sr.Microphone() as source:
             if keyword in text.lower():
                 print("Message received!")
 
-        except sr.UnknownValueError:
+        except sr.UnknownValueError: 
             # ignore unrecognized speech
             pass
         
