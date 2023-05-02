@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         self.PI_Lower = QLabel(self)
         self.VF_Upper = QLabel(self)
         self.VF_Lower = QLabel(self)
-
+#
         self.PI_Upper.setText("PIU")
         self.PI_Lower.setText("PIL")
         self.VF_Upper.setText("VFU")
