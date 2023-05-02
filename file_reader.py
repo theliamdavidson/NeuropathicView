@@ -42,14 +42,9 @@ class Patient:
             for j in range(iterable, len(long_list[i])):
                 try:
                     print("storing vessel:" + long_list[i][j])
-                    return_list.append([long_list[i][j],[i,j]])
+                    return_list.append([long_list[i][j],[i,j],[None,None,None,None]])
                 except TypeError:
                     pass
-        for i in range(len(return_list)):
-            for index, vessels in enumerate(return_list):
-                if vessels[1][1] == i:
-
-                    return_list[index].append([None,None,None,None])    
         return_list.sort(key=lambda x: x[1][1]) # sort by the second element of each key
         print(return_list)
         return return_list
@@ -64,32 +59,61 @@ class Patient:
             shutil.copyfile('excel/NVI.xlsx', self.file_name)
         self.vs_list = self.file_looper()  
 
+    def printing_loop(self, long_list, items):
+        counter = 0
+        while counter <= 1:
+            for rows, rowlist in enumerate(long_list):
+                for cols, values in enumerate(rowlist):
+                    if values == items[0]:
+                        if (self.test_type == "NVI") and (items[1][1] == 0):
+                            long_list[rows][cols+2] = items[2][0]         # PI Upper
+                            long_list[rows+1][cols+2] = items[2][2]       # VF Upper
+                            long_list[rows][cols+3] = items[2][1]         # PI Lower
+                            long_list[rows+1][cols+3] = items[2][3]       # VF Lower
+                        else:
+                            long_list[rows][cols+1] = items[2][0]         # PI Upper
+                            long_list[rows+1][cols+1] = items[2][2]       # VF Upper
+                            long_list[rows][cols+2] = items[2][1]         # PI Lower
+                            long_list[rows+1][cols+2] = items[2][3]       # VF Lower
+                        counter +=1
+        return long_list     
+        # if self.test_type == "NVI":
+        #             if items[1][1] == 0:
+        #                 long_list[items[1][0]][items[1][1]+2] = items[2][0]         # PI Upper
+        #                 long_list[items[1][0]+1][items[1][1]+2] = items[2][2]       # VF Upper
+        #                 long_list[items[1][0]][items[1][1]+3] = items[2][1]         # PI Lower
+        #                 long_list[items[1][0]+1][items[1][1]+3] = items[2][3]       # VF Lower
+        #             else:
+        #                 long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
+        #                 long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
+        #                 long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
+        #                 long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
+        #         else:
+        #             long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
+        #             long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
+        #             long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
+        #             long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
+        #             print(items[0])
+
     def file_writer(self):
         long_list = self.list_creator(self.file_name)
         print(self.vs_list)
+        print(long_list)
         for items in self.vs_list:
-            if self.test_type == "NVI":
-                if items[1][1] == 0:
-                    long_list[items[1][0]][items[1][1]+2] = items[2][0]         # PI Upper
-                    long_list[items[1][0]+1][items[1][1]+2] = items[2][2]       # VF Upper
-                    long_list[items[1][0]][items[1][1]+3] = items[2][1]         # PI Lower
-                    long_list[items[1][0]+1][items[1][1]+3] = items[2][3]       # VF Lower
-                else:
-                    long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
-                    long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
-                    long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
-                    long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
-            else:
-                long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
-                long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
-                long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
-                long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
+            if items[2][0] is not None:
+                try:
+                    long_list = self.printing_loop(long_list, items)
+                except:
+                    print(items[0])
+                    print("failure")
+                    return False
         df = pd.DataFrame(long_list)
         df = df.T
+        # transpose the matrix back the correct way
  
         b4_time = datetime.datetime.now()
      
-        with pd.ExcelWriter(self.file_name, engine='openpyxl', mode='a',if_sheet_exists='replace') as writer: #
+        with pd.ExcelWriter(self.file_name, engine='openpyxl', mode='a',if_sheet_exists='overlay') as writer: #
             df.to_excel(writer,'Raw.donate',startrow=0, index=False, header=False)
 
         cur_time = datetime.datetime.now()
@@ -146,7 +170,6 @@ class Patient:
             except ValueError:
                 self.found_value = found_value[1]
                 print("broke out")
-                #found_value = found_value[1]
         else:
             self.found_value = found_value[1]
         return found_value[1]
@@ -187,41 +210,44 @@ class Patient:
             if vessel[0] == self.vessel_storage[0]:
                 self.vs_list[index][2] == self.vessel_storage[1]
                 return True
-    
+
     def vessel_finder(self):
         if self.vessels_found is False:
             if self.test_type == "Food":
-                    self.UE_vessels = ["Pre Vessels"]
-                    self.LE_vessels = ["Post Vessels"]
-                    self.viscera_vessels = ["Pre Vessels"]
-                    self.skin_vessels = ["Post Vessels"]
+                vessel_col_iter = ["Pre Vessels", "Post Vessels", "Pre Vessels", "Post Vessels"]
+            else: 
+                vessel_col_iter =["Left Lower Ex Vessels", "Right Lower Ex Vessels", "Left Upper Ex Vessels", "Right Upper Ex Vessels", "Viscera Vessels", "MISC", ""]
+
+            sorted_values = []
             for items in self.vs_list:
                 vessel_name = items[0]
-                column_num = items[1][1] 
-                print(items)
-                if self.test_type == "Food":
-
-                    if column_num == 0:
-                        self.UE_vessels.append(vessel_name)
-                    elif column_num == 5:
-                        self.LE_vessels.append(vessel_name)
-                    else: 
-                        print(vessel_name, "failed at", column_num)
+                row_num = items[1][1] 
+                sorted_values.append([vessel_name, row_num])
+            sorted_values.sort(key=lambda x: x[1])
+            list_of_lists = []
+            current_key = sorted_values[0][1]
+            counter = 0
+            current_list = []
+            current_list.append(vessel_col_iter[counter])
+            current_list.append(sorted_values[0][0])
+            
+            # Iterate through the sorted list and add each sublist to the appropriate list
+            for sublist in sorted_values[1:]:
+                if sublist[1] != current_key:
+                    list_of_lists.append(current_list)
+                    current_list = []
+                    counter+=1
+                    current_list.append(vessel_col_iter[counter])
+                    current_list.append(sublist[0])
+                    current_key = sublist[1]
+                    
                 else:
-                    if (column_num == 0) or (column_num == 5):
-                        self.UE_vessels.append(vessel_name)
-                    
-                    elif (column_num == 10) or (column_num == 15):
-                        self.LE_vessels.append(vessel_name)
-                    
-                    elif items[1][1] == 20:
-                        self.skin_vessels.append(vessel_name)
-
-                    elif (column_num == 26) or (column_num == 31):
-                        self.viscera_vessels.append(vessel_name)
-                
-                    
-        return[self.UE_vessels, self.LE_vessels, self.viscera_vessels, self.skin_vessels]
+                    current_list.append(sublist[0])
+            list_of_lists.append(current_list)
+            print()
+            print()
+            print()            
+        return list_of_lists
 
     def vessel_confirm(self, vessel_i):
         for value in self.vs_list:
@@ -242,6 +268,7 @@ if __name__ == "__main__":
     p.patient_name = "Nicole Davidson"
     p.test_type = "NVI"
     p.file_reader()
+    print(p.vessel_finder())
 # import pandas as pd
 # import shutil
 # from capture_ocr import capture_decoder

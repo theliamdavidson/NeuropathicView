@@ -39,11 +39,11 @@ def change_current_vessel():
     vessel_list = patient_instance.vessel_finder()  
     return render_template("vessel.html",
                             name=patient_instance.patient_name,
-                            #finished_vessel_values=patient_instance.completed_vessel_values,
                             UE_vessels = vessel_list[0],
                             LE_vessels = vessel_list[1],
                             viscera_vessels = vessel_list[2],
-                            skin_vessels = vessel_list[3])
+                            skin_vessels = vessel_list[3],
+                            misc = vessel_list[4])
                             
 @app.route('/confirm_vessel', methods=['POST','GET'])
 def confirm_vessel(): 
@@ -51,6 +51,7 @@ def confirm_vessel():
     ves_two = request.form.get("levessel")
     ves_three = request.form.get("visvessel")
     ves_four = request.form.get("skinvessel")
+    ves_five = request.form.get("MISC")
     if ves_one is not None:
         vessel_i = ves_one
     elif ves_two is not None:
@@ -59,6 +60,8 @@ def confirm_vessel():
         vessel_i = ves_three
     elif ves_four is not None:
         vessel_i = ves_four
+    elif ves_five is not None:
+        vessel_i = ves_five
     patient_instance.vessel_confirm(vessel_i)
     return(index_call())
 
