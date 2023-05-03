@@ -16,12 +16,11 @@ class Patient:
         self.data_type = ""
         self.found_value = 0
         self.vessel_storage = [True,[None,None,None,None]]
-        self.row_index = False
-        self.UE_vessels = ["Upper Ex Vessels"]
-        self.LE_vessels = ["Lower Ex Vessels"]
-        self.viscera_vessels = ["Viscera Vessels"]
-        self.skin_vessels = ["Skin Vessels"]
+        self.previous_vessel = None
+        self.col_index = False
         self.completed_vessel_values = []
+        self.row_index = 0
+        self.indexed_list = 0
              
     def list_creator(self, file_name):
         raw_data = pd.read_excel(file_name,'Raw.donate',header=None)
@@ -77,23 +76,6 @@ class Patient:
                             long_list[rows+1][cols+2] = items[2][3]       # VF Lower
                         counter +=1
         return long_list     
-        # if self.test_type == "NVI":
-        #             if items[1][1] == 0:
-        #                 long_list[items[1][0]][items[1][1]+2] = items[2][0]         # PI Upper
-        #                 long_list[items[1][0]+1][items[1][1]+2] = items[2][2]       # VF Upper
-        #                 long_list[items[1][0]][items[1][1]+3] = items[2][1]         # PI Lower
-        #                 long_list[items[1][0]+1][items[1][1]+3] = items[2][3]       # VF Lower
-        #             else:
-        #                 long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
-        #                 long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
-        #                 long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
-        #                 long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
-        #         else:
-        #             long_list[items[1][0]][items[1][1]+1] = items[2][0]         # PI Upper
-        #             long_list[items[1][0]+1][items[1][1]+1] = items[2][2]       # VF Upper
-        #             long_list[items[1][0]][items[1][1]+2] = items[2][1]         # PI Lower
-        #             long_list[items[1][0]+1][items[1][1]+2] = items[2][3]       # VF Lower
-        #             print(items[0])
 
     def file_writer(self):
         long_list = self.list_creator(self.file_name)
@@ -122,14 +104,24 @@ class Patient:
         return True
 
     def vessel_list_iterator(self):
-        for items in self.vs_list:
-            for i in range(len(self.vs_list)):
-                if items[1][1] == i:
-                    if items[2][0] is None:
-                        print(i)
-                        self.vessel_storage = [items[0],items[2]]
-                        self.row_index = i
-                        return True
+        print("liam")
+        print(self.indexed_list)
+        for i in range(self.indexed_list, len(self.vs_list)):
+            if self.vs_list[i][2][0] is None:
+                self.vessel_storage = [self.vs_list[i][0],self.vs_list[i][2]]
+                self.col_index = self.vs_list[i][1][1]
+                self.indexed_list = i
+                return True
+            
+            # slightly obtuse way to check completion above and below the starting point
+            # allows for irratic changes by the user
+
+        for i in range(self.indexed_list):
+            if self.vs_list[i][2][0] is None:
+                self.vessel_storage = [self.vs_list[i][0],self.vs_list[i][2]]
+                self.col_index = self.vs_list[i][1][1]
+                self.indexed_list = i
+                return True
         self.vessel_storage = ["Test Complete", [None,None,None,None]]            
 
     def index(self):
@@ -138,16 +130,16 @@ class Patient:
             values of the vessel (if any),
             and returns them to the main display
         '''
+        print("index, column",self.indexed_list, self.col_index)
         if self.vessel_storage[0] is True:
             try:
-                for items in self.vs_list:
-                        if items[1][1] == self.row_index:
-                            if items[2][0] is None:
-                                self.vessel_storage = [items[0],items[2]]
-                                return self.vessel_storage
+                for i in range(self.indexed_list,len(self.vs_list)):
+                    if self.vs_list[i][2][0] is None:
+                        self.vessel_storage = [self.vs_list[i][0],self.vs_list[i][2]]
+                        return self.vessel_storage
                 self.vessel_list_iterator()
             except:
-                if self.row_index is False:
+                if self.col_index is False:
                     self.vessel_list_iterator()
         return self.vessel_storage
         
@@ -198,6 +190,7 @@ class Patient:
             if items[0] == self.vessel_storage[0]:
                 self.vs_list[index][2] = self.vessel_storage[1]
                 self.completed_vessel_values.append(self.vessel_storage)
+                self.previous_vessel = [self.vessel_storage[0], index]
                 self.vessel_storage = [True, [None,None,None,None]]
                 return True
         print("The vessel name does not match any stored values.")
@@ -250,11 +243,14 @@ class Patient:
         return list_of_lists
 
     def vessel_confirm(self, vessel_i):
-        for value in self.vs_list:
+        print("in the function")
+        for index, value in enumerate(self.vs_list):
+            print(value)
             if value[0] == vessel_i:
-                print("old", self.vessel_storage)
+                print("found it")
+                self.indexed_list = index
+                self.col_index = value[1][1]
                 self.vessel_storage = [value[0],value[2]]
-                print("new", self.vessel_storage)
                 # STORE THE PREVIOUSLY HELD VALUE ?
                 break
 

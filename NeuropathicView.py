@@ -32,6 +32,7 @@ def first_tasks():
     patient_instance.test_type = request.form.get("test")
     patient_instance.patient_name = request.form.get("fname")
     patient_instance.file_reader()
+    print(patient_instance.vs_list)
     return(index_call())
          
 @app.route('/update_vessel', methods=['POST','GET'])

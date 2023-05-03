@@ -21,6 +21,10 @@
                     <form method="POST" action="/monophasic_form">
                         <input id="flat_reading" type="submit" value="Monophasic Wave Form">
                     </form>
+                    <form method="post" action="{{url_for('confirm_value')}}">
+                      <input type="text"  id="new_value" name="new_value">                 
+                      <input type="submit" value="Enter New Value">
+                    </form>
                 </div>
                 <div class = "mid-group"></div>
                 <div class = "right-group">

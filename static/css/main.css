@@ -52,6 +52,18 @@ select{
   display: inline-block; 
   margin-right: 10px;
 }
+input[type=text]{
+  
+  padding: 16px 32px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 160px;
+  
+  display: inline-block; 
+  
+}
 input[type=submit]{
   background-color: #d9d5d4;
   border: none;
