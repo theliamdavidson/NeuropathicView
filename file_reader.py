@@ -209,7 +209,7 @@ class Patient:
             if self.test_type == "Food":
                 vessel_col_iter = ["Pre Vessels", "Post Vessels", "Pre Vessels", "Post Vessels"]
             else: 
-                vessel_col_iter =["Left Lower Ex Vessels", "Right Lower Ex Vessels", "Left Upper Ex Vessels", "Right Upper Ex Vessels", "Viscera Vessels", "MISC", ""]
+                vessel_col_iter =["Left Lower Ex Vessels", "Right Lower Ex Vessels", "Right Upper Ex Vessels", "Left Upper Ex Vessels", "Viscera Vessels", "MISC", ""]
 
             sorted_values = []
             for items in self.vs_list:

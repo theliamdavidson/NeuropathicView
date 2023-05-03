@@ -13,40 +13,47 @@
 
                 <div class = "left-group">
                     <form method="post" action="{{url_for('confirm_vessel')}}">
-                        <select id="uevessel" name="uevessel" onchange="this.form.submit()">
-                            {% for vessel in UE_vessels%}
+                        <select id="LeftLower" name="LeftLower" onchange="this.form.submit()">
+                            {% for vessel in LeftLower%}
                             <option value= "{{vessel}}">{{vessel}}</option>"
                             {% endfor %}                       
                         </select>
                     </form>
 
                     <form method="post" action="{{url_for('confirm_vessel')}}">
-                        <select id="levessel" name="levessel" onchange="this.form.submit()">
-                            {% for vessel in LE_vessels%}
+                        <select id="RightLower" name="RightLower" onchange="this.form.submit()">
+                            {% for vessel in RightLower%}
                             <option value= "{{vessel}}">{{vessel}}</option>"
                             {% endfor %}                       
                         </select>
                     </form>
 
                     <form method="post" action="{{url_for('confirm_vessel')}}">
-                        <select id="visvessel" name="visvessel" onchange="this.form.submit()">
-                            {% for vessel in viscera_vessels%}
+                        <select id="RightUpper" name="RightUpper" onchange="this.form.submit()">
+                            {% for vessel in RightUpper%}
                             <option value= "{{vessel}}">{{vessel}}</option>"
                             {% endfor %}                       
                         </select>
                     </form>
 
                     <form method="post" action="{{url_for('confirm_vessel')}}">
-                        <select id="skinvessel" name="skinvessel" onchange="this.form.submit()">
-                            {% for vessel in skin_vessels%}
+                        <select id="LeftUpper" name="LeftUpper" onchange="this.form.submit()">
+                            {% for vessel in LeftUpper%}
                             <option value= "{{vessel}}">{{vessel}}</option>"
                             {% endfor %}                       
                         </select>
                     </form>
 
+                    <form method="post" action="{{url_for('confirm_vessel')}}">
+                        <select id="Viscera" name="Viscera" onchange="this.form.submit()">
+                            {% for vessel in Viscera%}
+                            <option value= "{{vessel}}">{{vessel}}</option>"
+                            {% endfor %}                       
+                        </select>
+                    </form>
                     <form method="post" action="{{url_for('confirm_vessel')}}">
                         <select id="MISC" name="MISC" onchange="this.form.submit()">
-                            {% for vessel in misc%}
+                            {% for vessel in MISC%}
                             <option value= "{{vessel}}">{{vessel}}</option>"
                             {% endfor %}                       
                         </select>

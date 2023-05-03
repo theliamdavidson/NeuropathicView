@@ -40,29 +40,26 @@ def change_current_vessel():
     vessel_list = patient_instance.vessel_finder()  
     return render_template("vessel.html",
                             name=patient_instance.patient_name,
-                            UE_vessels = vessel_list[0],
-                            LE_vessels = vessel_list[1],
-                            viscera_vessels = vessel_list[2],
-                            skin_vessels = vessel_list[3],
-                            misc = vessel_list[4])
+                            LeftLower = vessel_list[0],
+                            RightLower = vessel_list[1],
+                            RightUpper = vessel_list[2],
+                            LeftUpper = vessel_list[3],
+                            Viscera = vessel_list[4],
+                            MISC = vessel_list[5])
                             
 @app.route('/confirm_vessel', methods=['POST','GET'])
 def confirm_vessel(): 
-    ves_one = request.form.get("uevessel")
-    ves_two = request.form.get("levessel")
-    ves_three = request.form.get("visvessel")
-    ves_four = request.form.get("skinvessel")
-    ves_five = request.form.get("MISC")
-    if ves_one is not None:
-        vessel_i = ves_one
-    elif ves_two is not None:
-        vessel_i = ves_two
-    elif ves_three is not None:
-        vessel_i = ves_three
-    elif ves_four is not None:
-        vessel_i = ves_four
-    elif ves_five is not None:
-        vessel_i = ves_five
+    ves_one = request.form.get("LeftLower")
+    ves_two = request.form.get("RightLower")
+    ves_three = request.form.get("RightUpper")
+    ves_four = request.form.get("LeftUpper")
+    ves_five = request.form.get("Viscera")
+    ves_six = request.form.get("MISC")
+    for var in [ves_one, ves_two, ves_three, ves_four, ves_five, ves_six]:
+        if var is not None:
+            print(var)
+            vessel_i = var
+            break
     patient_instance.vessel_confirm(vessel_i)
     return(index_call())
 

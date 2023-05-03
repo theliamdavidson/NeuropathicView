@@ -80,7 +80,8 @@ input[type=submit]{
 }
 input[type=radio]{
   transform: scale(3);
-  margin: 7px 20px;
+  margin: 20px 20px;
+
 }
 div.data_form{
   width: 40%;
@@ -100,7 +101,8 @@ div.data_form{
 }
 .home-text{
   color: #444;
-  margin-right: 2%;
+  margin-right: 9%;
+  margin-left:10%;
 }
 .flex-container {
   display: flex;
