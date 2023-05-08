@@ -3,6 +3,7 @@ import pytesseract
 from PIL import Image
 import logging
 from random import randint
+from math import floor
 
 DEBUG = True
 
@@ -42,7 +43,7 @@ def capture_decoder():
     if DEBUG is True:
         names =[ "PI", "VF" ]
         will_loop = randint(0,1)
-        return([names[will_loop],str(randint(1, 450)/4.5)])
+        return([names[will_loop],str(floor((randint(1, 450)/4.5)*100)/100)])
     else:
         logging.basicConfig(filename="blankoutput.log",
                         format='%(asctime)s %(message)s',

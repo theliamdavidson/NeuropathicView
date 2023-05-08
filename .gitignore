@@ -9,3 +9,4 @@ input.txt
 speech.py
 test.py
 testgui.py
+templates/test.html

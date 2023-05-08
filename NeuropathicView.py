@@ -9,7 +9,7 @@ def index_call(end=False):
         value = patient_instance.value_hunter()
         value_name = patient_instance.data_type
         selected_vessel = patient_instance.index()
-        return render_template("index.html",  
+        return render_template("test.html",  
                                 selected_vessel = selected_vessel[0],
                                 name = patient_instance.patient_name, 
                                 num = value_name + ": " + value, 
