@@ -5,7 +5,7 @@ import logging
 from random import randint
 from math import floor
 
-DEBUG = True
+DEBUG = False
 
 def capture_from_image():
     cap = cv.VideoCapture(0)
