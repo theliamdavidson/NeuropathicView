@@ -80,10 +80,9 @@ def capture_decoder():
                         float(items)
                         capture_decoder_return = [name, items]
                     except:
-                        print()
+                        pass
                 return(capture_decoder_return)
             else:
-                print(split_txt)
                 return(["value not found", "0.00"])            
                 # thinking about changing how the blank return is formatted
 

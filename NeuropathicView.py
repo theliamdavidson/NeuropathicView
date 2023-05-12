@@ -32,7 +32,6 @@ def first_tasks():
     patient_instance.test_type = request.form.get("test")
     patient_instance.patient_name = request.form.get("fname")
     patient_instance.file_reader()
-    print(patient_instance.vs_list)
     return(index_call())
          
 @app.route('/update_vessel', methods=['POST','GET'])
@@ -57,7 +56,6 @@ def confirm_vessel():
     ves_six = request.form.get("MISC")
     for var in [ves_one, ves_two, ves_three, ves_four, ves_five, ves_six]:
         if var is not None:
-            print(var)
             vessel_i = var
             break
     patient_instance.vessel_confirm(vessel_i)
@@ -114,7 +112,7 @@ def delete_recent():
                 if float(data) != 0:
                     post_vals.append(data)
             except:
-                print(data)
+                pass
     selected_vessel = patient_instance.vessel_storage
     return(render_template("deletion_page.html",
                             selected_vessel = selected_vessel[0],
@@ -132,7 +130,6 @@ def confirm_value():
         if value is None:
             patient_instance. vessel_storage[1][to_iterate[index]]=value_to_save
             break
-    print("values",value)
     response = patient_instance.completion_checker()
     if response is None:
         return(index_call())
