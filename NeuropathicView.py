@@ -90,11 +90,7 @@ def view_data():
 @app.route('/results/', methods=['GET','POST'])
 def results():
     post_val = []
-    if patient_instance.test_type == "NVI":
-       pass
 
-    elif patient_instance.test_type == "Food":
-        pass
 
     return render_template("results.html", 
                             macro_vessel_values = post_val, 
