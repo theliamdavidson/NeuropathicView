@@ -89,11 +89,7 @@ def view_data():
 
 @app.route('/results/', methods=['GET','POST'])
 def results():
-    post_val = []
-
-
     return render_template("results.html", 
-                            macro_vessel_values = post_val, 
                             name=patient_instance.patient_name)
 
 @app.route('/print_data/', methods=['GET','POST'])
