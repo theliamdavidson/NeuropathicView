@@ -117,7 +117,6 @@ def delete_recent():
     return(render_template("deletion_page.html",
                             selected_vessel = selected_vessel[0],
                             potential_vals = post_vals,
-                            #vessels = patient_instance.vessel_storage[1],
                             current_vessel_values = selected_vessel[1]))    
 
 @app.route('/confirm_value/', methods=['POST', 'GET'])
