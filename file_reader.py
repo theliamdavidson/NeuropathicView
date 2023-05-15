@@ -36,13 +36,10 @@ class Patient:
         return_list = []
         long_list = self.list_creator(self.file_name)
         iterable = self.data_cleaner(long_list)
-        for i in range(3, len(long_list)):
-            for j in range(iterable, len(long_list[i])):
-                try:
-                    print("storing vessel:" + long_list[i][j])
-                    return_list.append([long_list[i][j],[i,j],[None,None,None,None]])
-                except TypeError:
-                    pass
+        for row_index in range(3, len(long_list)):
+            for col_index in range(iterable, len(long_list[row_index])):
+                if isinstance(long_list[row_index][col_index], str):
+                    return_list.append([long_list[row_index][col_index],[row_index,col_index],[None,None,None,None]])
         return_list.sort(key=lambda x: x[1][1]) # sort by the second element of each key
         return return_list
         
@@ -133,22 +130,33 @@ class Patient:
                 if self.col_index is False:
                     self.vessel_list_iterator()
         return self.vessel_storage
+    
+    def decimal_wizard(self, found_value):
+        '''
+            str -> str;
+            this function corrects for the common case where  
+            OCR does not decect the decimal point in a value
+        '''
+        try:
+            if int(found_value[1]) > 999:
+                found_value = found_value[1][:2] + '.' + found_value[1][2:]
+                #--------------------------------------------------------------
+                return found_value
+            elif int(found_value[1]) > 99:
+                found_value = found_value[1][:1] + '.' + found_value[1][1:]
+                #--------------------------------------------------------------
+                return found_value
+        except ValueError:
+            pass    
+        return found_value[1]
         
     def value_hunter(self):
         found_value = capture_decoder()
         self.data_type = found_value[0]
         if self.data_type == "PI":
-            try:
-                if int(found_value[1]) > 999:
-                    self.found_value = found_value[1][:2] + '.' + found_value[1][2:]
-                    #--------------------------------------------------------------
-                    return self.found_value
-                elif int(found_value[1]) > 99:
-                    self.found_value = found_value[1][:1] + '.' + found_value[1][1:]
-                    #--------------------------------------------------------------
-                    return self.found_value
-            except ValueError:
-                self.found_value = found_value[1]
+            value_str = str(found_value)
+            if '.' not in value_str:
+                self.found_value = self.decimal_wizard(found_value)
         else:
             self.found_value = found_value[1]
         return found_value[1]
@@ -198,7 +206,7 @@ class Patient:
                 vessel_name = items[0]
                 row_num = items[1][1] 
                 sorted_values.append([vessel_name, row_num])
-            sorted_values.sort(key=lambda x: x[1])
+            #sorted_values.sort(key=lambda x: x[1]) # potentially uneccessary; is on the chopping block
             list_of_lists = []
             current_key = sorted_values[0][1]
             counter = 0
@@ -240,3 +248,5 @@ if __name__ == "__main__":
     p.test_type = "NVI"
     p.file_reader()
     print(p.vessel_finder())
+    print(len(p.vs_list))
+    print(p.vs_list)
