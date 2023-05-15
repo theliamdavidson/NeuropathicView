@@ -70,7 +70,6 @@ def confirm_data_response():
 def read_data_response():
     return(index_call())
 
-
 @app.route('/monophasic_form', methods=['POST', 'GET'])  
 def monophasic():
     response = patient_instance.monophasic_values()
@@ -120,7 +119,6 @@ def delete_recent():
                             current_vessel_values = selected_vessel[1]))    
 
 @app.route('/confirm_value/', methods=['POST', 'GET'])
-
 def confirm_value():
     to_iterate = [0,2,1,3]
     value_to_save = request.form.get("new_value")
@@ -134,13 +132,11 @@ def confirm_value():
         return(index_call())
     index_val = False
     return(index_call(index_val))
-    
 
 @app.route('/confirm_delete', methods=['GET','POST'])
 def confirm_and_return():
     deletion_attempt = patient_instance.deletion()
     return(index_call())
-    
 
 if __name__ == '__main__':
     logging.basicConfig(filename="debug.log",
