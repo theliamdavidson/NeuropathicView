@@ -46,10 +46,11 @@ class Patient:
     def file_reader(self):
         date=datetime.datetime.now().strftime("%d-%m-%y_%I-%M")
         self.file_name='output/'+self.patient_name+"_"+self.test_type+"_"+date+'.xlsx'
-        if self.test_type == "Food":
-            shutil.copyfile('excel/Food.xlsx', self.file_name)
-        else:
-            shutil.copyfile('excel/NVI.xlsx', self.file_name)
+        shutil.copyfile('excel/'+ self.test_type +'.xlsx', self.file_name)
+        # if self.test_type == "Food":
+        #     shutil.copyfile('excel/Food.xlsx', self.file_name)
+        # else:
+        #     shutil.copyfile('excel/NVI.xlsx', self.file_name)
         self.vs_list = self.file_looper()  
 
     def printing_loop(self, long_list, items):
@@ -73,7 +74,6 @@ class Patient:
 
     def file_writer(self):
         long_list = self.list_creator(self.file_name)
-
         for items in self.vs_list:
             if items[2][0] is not None:
                 try:
@@ -83,15 +83,9 @@ class Patient:
         df = pd.DataFrame(long_list)
         df = df.T
         # transpose the matrix back the correct way
- 
-        b4_time = datetime.datetime.now()
-     
+
         with pd.ExcelWriter(self.file_name, engine='openpyxl', mode='a',if_sheet_exists='overlay') as writer: #
             df.to_excel(writer,'Raw.donate',startrow=0, index=False, header=False)
-
-        cur_time = datetime.datetime.now()
-        print(cur_time.strftime("%I:%M:%S"))
-        print("time to compute",cur_time-b4_time)
         return True
 
     def vessel_list_iterator(self):
@@ -101,8 +95,7 @@ class Patient:
                 self.col_index = self.vs_list[i][1][1]
                 self.indexed_list = i
                 return True
-            
-            # slightly obtuse way to check completion above and below the starting point
+            # check completion above and below the starting point
             # allows for irratic changes by the user
 
         for i in range(self.indexed_list):
