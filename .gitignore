@@ -4,9 +4,7 @@ output.zip
 debug.log
 othertest.py
 file_test.py
-input.txt
 speech.py
 test.py
 testgui.py
 templates/test.html
-info.txt
