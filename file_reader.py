@@ -32,11 +32,15 @@ class Patient:
                 return nums
         return False
 
-    def file_looper(self):
+    def file_looper(self, test_type):
         return_list = []
         long_list = self.list_creator(self.file_name)
         iterable = self.data_cleaner(long_list)
-        for row_index in range(3, len(long_list)):
+        if test_type == "NVI":
+            start_num = 3
+        else:
+            start_num = 0
+        for row_index in range(start_num, len(long_list)):
             for col_index in range(iterable, len(long_list[row_index])):
                 if isinstance(long_list[row_index][col_index], str):
                     return_list.append([long_list[row_index][col_index],[row_index,col_index],[None,None,None,None]])
@@ -51,7 +55,7 @@ class Patient:
         #     shutil.copyfile('excel/Food.xlsx', self.file_name)
         # else:
         #     shutil.copyfile('excel/NVI.xlsx', self.file_name)
-        self.vs_list = self.file_looper()  
+        self.vs_list = self.file_looper(self.test_type)  
 
     def printing_loop(self, long_list, items):
         counter = 0
@@ -82,6 +86,8 @@ class Patient:
                     return False
         df = pd.DataFrame(long_list)
         df = df.T
+        if self.test_type == "Food":
+            print(df)
         # transpose the matrix back the correct way
 
         with pd.ExcelWriter(self.file_name, engine='openpyxl', mode='a',if_sheet_exists='overlay') as writer: #
@@ -150,12 +156,16 @@ class Patient:
             value_str = str(found_value)
             if '.' not in value_str:
                 self.found_value = self.decimal_wizard(found_value)
+            else:
+                self.found_value = found_value[1]
         else:
             self.found_value = found_value[1]
         return found_value[1]
     
     def value_holder(self):
         if self.data_type == "PI":
+            print(self.found_value)
+            print(self.vessel_storage)
             if self.vessel_storage[1][0] is None:
                 self.vessel_storage[1][0] = self.found_value
             elif self.vessel_storage[1][1] is None:
