@@ -4,17 +4,18 @@ import logging
 from capture_ocr import find_all
 app = Flask(__name__)
 
-def index_call(end=False):
-    if end == False:
-        value = patient_instance.value_hunter()
-        value_name = patient_instance.data_type
-        selected_vessel = patient_instance.index()
-        return render_template("index.html",  
-                                selected_vessel = selected_vessel[0],
-                                name = patient_instance.patient_name, 
-                                num = value_name + ": " + value, 
-                                test = patient_instance.test_type,
-                                current_vessel_values = selected_vessel[1])
+def index_call():
+
+    value = patient_instance.value_hunter()
+    value_name = patient_instance.data_type
+    selected_vessel = patient_instance.index()
+    return render_template("index.html",  
+                            selected_vessel = selected_vessel[0],
+                            name = patient_instance.patient_name, 
+                            num = value_name + ": " + value, 
+                            test = patient_instance.test_type,
+                            current_vessel_values = selected_vessel[1])
+    print("yo")
     return render_template("index.html", 
                                 selected_vessel =  "None",
                                 name = patient_instance.patient_name, 
@@ -128,10 +129,7 @@ def confirm_value():
             patient_instance. vessel_storage[1][to_iterate[index]]=value_to_save
             break
     response = patient_instance.completion_checker()
-    if response is None:
-        return(index_call())
-    index_val = False
-    return(index_call(index_val))
+    return(index_call())
 
 @app.route('/confirm_delete', methods=['GET','POST'])
 def confirm_and_return():

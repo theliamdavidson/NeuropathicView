@@ -63,10 +63,10 @@ class Patient:
             for rows, rowlist in enumerate(long_list):
                 for cols, values in enumerate(rowlist):
                     if values == items[0]:
-                        if (self.test_type == "NVI") and (items[1][1] == 0):
-                            long_list[rows][cols+2] = items[2][0]         # PI Upper
-                            long_list[rows+1][cols+2] = items[2][2]       # VF Upper
-                            long_list[rows][cols+3] = items[2][1]         # PI Lower
+                        if (self.test_type == "NVI") and ((items[1][1] == 0) or items[1][1] == 65): #not happy with this solution, but the client's requests require 
+                            long_list[rows][cols+2] = items[2][0]         # PI Upper                 a change to accomodate the misaligned array. now that array is    
+                            long_list[rows+1][cols+2] = items[2][2]       # VF Upper                 in multiple places, the exception may or may not actually be in
+                            long_list[rows][cols+3] = items[2][1]         # PI Lower                 the first line anymore
                             long_list[rows+1][cols+3] = items[2][3]       # VF Lower
                         else:
                             long_list[rows][cols+1] = items[2][0]         # PI Upper
