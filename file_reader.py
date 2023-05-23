@@ -164,8 +164,6 @@ class Patient:
     
     def value_holder(self):
         if self.data_type == "PI":
-            print(self.found_value)
-            print(self.vessel_storage)
             if self.vessel_storage[1][0] is None:
                 self.vessel_storage[1][0] = self.found_value
             elif self.vessel_storage[1][1] is None:
