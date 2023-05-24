@@ -45,7 +45,7 @@ def capture_decoder():
         will_loop = randint(0,1)
         return([names[will_loop],str(floor((randint(1, 450)/4.5)*100)/100)])
     else:
-        logging.basicConfig(filename="blankoutput.log",
+        logging.basicConfig(filename="ocr_output.log",
                         format='%(asctime)s %(message)s',
                         filemode='a')
         logger = logging.getLogger()
