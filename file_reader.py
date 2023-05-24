@@ -51,10 +51,6 @@ class Patient:
         date=datetime.datetime.now().strftime("%d-%m-%y_%I-%M")
         self.file_name='output/'+self.patient_name+"_"+self.test_type+"_"+date+'.xlsx'
         shutil.copyfile('excel/'+ self.test_type +'.xlsx', self.file_name)
-        # if self.test_type == "Food":
-        #     shutil.copyfile('excel/Food.xlsx', self.file_name)
-        # else:
-        #     shutil.copyfile('excel/NVI.xlsx', self.file_name)
         self.vs_list = self.file_looper(self.test_type)  
 
     def printing_loop(self, long_list, items):
@@ -64,9 +60,9 @@ class Patient:
                 for cols, values in enumerate(rowlist):
                     if values == items[0]:
                         if (self.test_type == "NVI") and ((items[1][1] == 0) or items[1][1] == 65): #not happy with this solution, but the client's requests require 
-                            long_list[rows][cols+2] = items[2][0]         # PI Upper                 a change to accomodate the misaligned array. now that array is    
-                            long_list[rows+1][cols+2] = items[2][2]       # VF Upper                 in multiple places, the exception may or may not actually be in
-                            long_list[rows][cols+3] = items[2][1]         # PI Lower                 the first line anymore
+                            long_list[rows][cols+2] = items[2][0]         # PI Upper                 a change to accomodate the misaligned array. now that the array     
+                            long_list[rows+1][cols+2] = items[2][2]       # VF Upper                 is located in multiple places, the exception may or may not 
+                            long_list[rows][cols+3] = items[2][1]         # PI Lower                 actually be in the first line anymore
                             long_list[rows+1][cols+3] = items[2][3]       # VF Lower
                         else:
                             long_list[rows][cols+1] = items[2][0]         # PI Upper
@@ -140,11 +136,11 @@ class Patient:
             if int(found_value[1]) > 999:
                 found_value = found_value[1][:2] + '.' + found_value[1][2:]
                 #--------------------------------------------------------------
-                return found_value
+                #return found_value
             elif int(found_value[1]) > 99:
                 found_value = found_value[1][:1] + '.' + found_value[1][1:]
                 #--------------------------------------------------------------
-                return found_value
+            return found_value
         except ValueError:
             pass    
         return found_value[1]
@@ -206,7 +202,7 @@ class Patient:
                 vessel_name = items[0]
                 row_num = items[1][1] 
                 sorted_values.append([vessel_name, row_num])
-            #sorted_values.sort(key=lambda x: x[1]) # potentially uneccessary; is on the chopping block
+
             list_of_lists = []
             current_key = sorted_values[0][1]
             counter = 0
@@ -223,9 +219,9 @@ class Patient:
                     current_list.append(vessel_col_iter[counter])
                     current_list.append(sublist[0])
                     current_key = sublist[1]
-                    
                 else:
                     current_list.append(sublist[0])
+
             list_of_lists.append(current_list)
         return list_of_lists
 
