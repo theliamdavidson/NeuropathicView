@@ -32,7 +32,7 @@ def find_all():
     try:
         text = pytesseract.image_to_string(Image.fromarray(reduced_img))
     except:
-        text = "Camera may be disconnected"
+        text = "Camera may be disconnected, or the proper dependancies are not installed"
     return text
 
 def capture_decoder():
@@ -84,8 +84,6 @@ def capture_decoder():
                 return(capture_decoder_return)
             else:
                 return(["value not found", "0.00"])            
-                # thinking about changing how the blank return is formatted
-
 
 if __name__ == "__main__":
     while True:
