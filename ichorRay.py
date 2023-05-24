@@ -137,7 +137,7 @@ def confirm_and_return():
     return(index_call())
 
 if __name__ == '__main__':
-    logging.basicConfig(filename="ichorRay.log",
+    logging.basicConfig(filename="log_files\ichorRay.log",
                     format='%(asctime)s %(message)s',
                     filemode='a')
     logger = logging.getLogger()
