@@ -8,9 +8,31 @@
         {% extends "layout.html" %}
         {% block content %}
         
-            
             <div class ="flex-container">
-
+                <div id="popup" class="popup">
+                    <div class="popup-content">
+                        <form method="post" action="{{url_for('confirm_value')}}">
+                            <input type="text"  id="new_value" name="new_value">                 
+                            <input type="submit" value="Confirm Value">
+                          </form>
+                        
+                        <div class="button-array">
+                            <input type="button" value="1" id="button_one"/>
+                            <input type="button" value="2" id="button_two"/>
+                            <input type="button" value="3" id="button_three"/>
+                            <input type="button" value="4" id="button_four"/>
+                            <input type="button" value="5" id="button_five"/>
+                            <input type="button" value="6" id="button_six"/>
+                            <input type="button" value="7" id="button_seven"/>
+                            <input type="button" value="8" id="button_eight"/>
+                            <input type="button" value="9" id="button_nine"/>
+                            <input type="button" value="0" id="button_zero"/>
+                            <input type="button" value="." id="button_dot"/>
+                            <input type="button" value="D" id="button_del"/>
+                        </div>
+                      <button onclick="closePopup()">Cancel Input</button>
+                    </div>
+                  </div>
                 <div class = "left-group">
                     <a href="{{ url_for('change_current_vessel') }}">
                         <div class = "vessel-name-num">
@@ -30,37 +52,26 @@
                     </a>
                     
                     {% endif %}
-                    <form id="confirm" method="POST" action="/confirm_data">
-                        <input id="confirm_value" type="submit" value="Confirm Value">
-                    </form>
-                    <form method="POST" action="/read_data">
-                        <input id="redo_value" type="submit" value="Reload Value">
-                    </form>
-                    <form method="POST" action="/monophasic_form">
-                        <input id="flat_reading" type="submit" value="Monophasic Wave Form">
-                    </form>
+                    
                 </div>
                 <div class = "mid-group"></div>
                 <div class = "right-group">
-                    <form method="post" action="{{url_for('confirm_value')}}">
-                        <input type="text"  id="new_value" name="new_value">                 
-                        <input type="submit" value="Enter New Value">
-                      </form>
-                    
-                    <div class="button-array">
-                        <input type="button" value="1" id="button_one"/>
-                        <input type="button" value="2" id="button_two"/>
-                        <input type="button" value="3" id="button_three"/>
-                        <input type="button" value="4" id="button_four"/>
-                        <input type="button" value="5" id="button_five"/>
-                        <input type="button" value="6" id="button_six"/>
-                        <input type="button" value="7" id="button_seven"/>
-                        <input type="button" value="8" id="button_eight"/>
-                        <input type="button" value="9" id="button_nine"/>
-                        <input type="button" value="0" id="button_zero"/>
-                        <input type="button" value="." id="button_dot"/>
-                        <input type="button" value="D" id="button_del"/>
-                    </div>
+                    <form id="confirm" method="POST" action="/confirm_data">
+                        <input id="confirm_value" type="submit" value="Confirm Value">
+                    </form>
+                    <br></br.>
+                    <br></br.>
+                    <form method="POST" action="/read_data">
+                        <input id="redo_value" type="submit" value="Reload Value">
+                    </form>
+                    <br></br.>
+                    <br></br.>
+                    <form method="POST" action="/monophasic_form">
+                        <input id="flat_reading" type="submit" value="Monophasic Wave Form">
+                    </form>
+                    <br></br.>
+                    <br></br.>
+                    <button onclick="openPopup()">Input Value Manually</button>      
                 </div>
                 
         </div>
@@ -134,6 +145,15 @@
                 var newValue = text.value.slice(0, -1);
                 text.value = newValue;
             });
+            function openPopup() {
+                var popup = document.getElementById('popup');
+                popup.style.display = 'block';
+            }
+
+            function closePopup() {
+                var popup = document.getElementById('popup');
+                popup.style.display = 'none';
+            }
         </script>
 
         

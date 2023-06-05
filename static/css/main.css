@@ -108,7 +108,41 @@ div.data_form{
   display: flex;
   margin-left: 20% ;
   margin-right: 20%;
-  margin-top: 10%;
+  margin-top: 0%;
+}
+button{
+  color: Black;
+  padding: 27px 25px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;  
+  display: inline-block; 
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: #fff;
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content button {
+  margin-top: 10px;
 }
 .mid-group {
   flex: 1;
@@ -141,8 +175,10 @@ input[type=checkbox]{
   flex: 1;
   border: 2px black;
   text-align: center;
-  min-width: 36vmin
+  min-width: 36vmin;
+  padding-top: 5%;
 }
+
 .vessel-group {
   text-align: center;
   flex: 1;
