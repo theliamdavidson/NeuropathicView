@@ -13,8 +13,7 @@
                     <div class="popup-content">
                         <form method="post" action="{{url_for('confirm_value')}}">
                             <input type="text"  id="new_value" name="new_value">                 
-                            <input type="submit" value="Confirm Value">
-                          </form>
+                            
                         
                         <div class="button-array">
                             <input type="button" value="1" id="button_one"/>
@@ -30,7 +29,10 @@
                             <input type="button" value="." id="button_dot"/>
                             <input type="button" value="D" id="button_del"/>
                         </div>
+
                       <button onclick="closePopup()">Cancel Input</button>
+                      <input type="submit" value="Confirm Value">
+                    </form>
                     </div>
                   </div>
                 <div class = "left-group">
