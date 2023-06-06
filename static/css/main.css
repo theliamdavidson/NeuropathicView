@@ -4,9 +4,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #444;
 }
-/*
-  * Formatting the header area
-  */
 header {
   background-color: #901C3B;
   height: 40px;
@@ -48,21 +45,17 @@ select{
   margin: 4px 2px;
   cursor: pointer;
   width: 227px;
-  
   display: inline-block; 
   margin-right: 10px;
 }
 input[type=text]{
-  
   padding: 16px 32px;
   text-decoration: none;
   font-weight: bold;
   margin-top: 15px;
   cursor: pointer;
   width: 160px;
-  
   display: inline-block; 
-  
 }
 input[type=submit]{
   background-color: #d9d5d4;
@@ -74,14 +67,11 @@ input[type=submit]{
   margin-top: 15px;
   cursor: pointer;
   width: 227px;
-  
   display: inline-block; 
-  
 }
 input[type=radio]{
   transform: scale(3);
   margin: 20px 20px;
-
 }
 div.data_form{
   width: 40%;
@@ -91,7 +81,6 @@ div.data_form{
 .vessel-name-num{
   text-align: center;
   outline: 1px solid;
- 
 }
 .num-display {
   text-align: center;
@@ -128,7 +117,6 @@ button{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
-
 .popup-content {
   background-color: #fff;
   width: 300px;
@@ -136,11 +124,9 @@ button{
   padding: 20px;
   text-align: center;
 }
-
 .popup-content h2 {
   margin-top: 0;
 }
-
 .popup-content button {
   margin-top: 10px;
 }
@@ -159,10 +145,11 @@ a {
   flex: 1;
   display: inline-block;
 /*
-min-width: 36vmin;
-padding-top: 5%;
-margin-bottom: 2%;
-
+  min-width: 36vmin;
+  padding-top: 5%;
+  margin-bottom: 2%;
+  margin-left: 17%;
+  margin-right: 17%;
 */
 }
 input[type=checkbox]{
@@ -184,7 +171,6 @@ input[type=checkbox]{
   text-align: center;
   
 }
-
 .vessel-group {
   text-align: center;
   flex: 1;
