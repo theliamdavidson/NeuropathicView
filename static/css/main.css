@@ -153,11 +153,17 @@ a {
   text-decoration: none;
 } 
 .left-group {
+  padding-top: 5%;
+
   text-align: center;
   flex: 1;
-  margin-bottom: 2%;
   display: inline-block;
+/*
+min-width: 36vmin;
+padding-top: 5%;
+margin-bottom: 2%;
 
+*/
 }
 input[type=checkbox]{
   /* Double-sized Checkboxes */
@@ -174,9 +180,9 @@ input[type=checkbox]{
 .right-group {
   flex: 1;
   border: 2px black;
+  display: inline-block;
   text-align: center;
-  min-width: 36vmin;
-  padding-top: 5%;
+  
 }
 
 .vessel-group {

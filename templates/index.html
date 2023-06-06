@@ -34,6 +34,25 @@
                     </div>
                   </div>
                 <div class = "left-group">
+                    
+
+                    <form id="confirm" method="POST" action="/confirm_data">
+                        <input id="confirm_value" type="submit" value="Confirm Value">
+                    </form>
+                    <br></br.>
+                    <form method="POST" action="/read_data">
+                        <input id="redo_value" type="submit" value="Reload Value">
+                    </form>
+                    <br></br.>
+                    <form method="POST" action="/monophasic_form">
+                        <input id="flat_reading" type="submit" value="Monophasic Wave Form">
+                    </form>
+                    <br></br.>
+                    <button onclick="openPopup()">Input Value Manually</button>      
+                    
+                </div>
+                <div class = "mid-group"></div>
+                <div class = "right-group">
                     <a href="{{ url_for('change_current_vessel') }}">
                         <div class = "vessel-name-num">
                             <h1>{{num}}</h1>
@@ -52,26 +71,7 @@
                     </a>
                     
                     {% endif %}
-                    
-                </div>
-                <div class = "mid-group"></div>
-                <div class = "right-group">
-                    <form id="confirm" method="POST" action="/confirm_data">
-                        <input id="confirm_value" type="submit" value="Confirm Value">
-                    </form>
-                    <br></br.>
-                    <br></br.>
-                    <form method="POST" action="/read_data">
-                        <input id="redo_value" type="submit" value="Reload Value">
-                    </form>
-                    <br></br.>
-                    <br></br.>
-                    <form method="POST" action="/monophasic_form">
-                        <input id="flat_reading" type="submit" value="Monophasic Wave Form">
-                    </form>
-                    <br></br.>
-                    <br></br.>
-                    <button onclick="openPopup()">Input Value Manually</button>      
+
                 </div>
                 
         </div>
