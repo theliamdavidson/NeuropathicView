@@ -78,6 +78,7 @@
                 
         </div>
         <script>
+            // Links for the voice activation
             document.addEventListener("keydown", function(event) {
               if (event.key === "l") {
                 document.getElementById("confirm_value").click();
@@ -98,6 +99,7 @@
                 document.getElementById("redo_value").click();
               }
             });
+            // Buttons for the manual entry
             document.getElementById("button_one").addEventListener('click', function () {
                 var text = document.getElementById('new_value');
                 text.value += '1';
@@ -147,8 +149,8 @@
                 var newValue = text.value.slice(0, -1);
                 text.value = newValue;
             });
-            const buttons = document.querySelectorAll('input[type="submit"]');
 
+            const buttons = document.querySelectorAll('input[type="submit"]');
             // Function to hide the buttons
             function hideButtons() {
             // Loop through each button and hide them
@@ -159,8 +161,10 @@
 
             // Add event listener to each button
             buttons.forEach(button => {
-            button.addEventListener('click', hideButtons);
+                button.addEventListener('click', hideButtons);
             });
+
+            // Manual input popup
             function openPopup() {
                 var popup = document.getElementById('popup');
                 popup.style.display = 'block';
