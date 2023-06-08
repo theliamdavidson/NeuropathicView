@@ -144,13 +144,6 @@ a {
   text-align: center;
   flex: 1;
   display: inline-block;
-/*
-  min-width: 36vmin;
-  padding-top: 5%;
-  margin-bottom: 2%;
-  margin-left: 17%;
-  margin-right: 17%;
-*/
 }
 input[type=checkbox]{
   /* Double-sized Checkboxes */

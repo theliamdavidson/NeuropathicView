@@ -133,10 +133,12 @@ class Patient:
             OCR does not decect the decimal point in a value
         '''
         try:
-            if int(found_value[1]) > 999:
+            if int(found_value[1]) > 9999:
+                found_value = found_value[1][:3] + '.' + found_value[1][3:]
+                #--------------------------------------------------------------
+            elif int(found_value[1]) > 999:
                 found_value = found_value[1][:2] + '.' + found_value[1][2:]
                 #--------------------------------------------------------------
-                #return found_value
             elif int(found_value[1]) > 99:
                 found_value = found_value[1][:1] + '.' + found_value[1][1:]
                 #--------------------------------------------------------------
