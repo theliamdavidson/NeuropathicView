@@ -16,8 +16,7 @@
                             <input type="submit" value="Confirm Value">
                          </form>           
                          <button onclick="closePopup()">Cancel Input</button>
-                            
-                        
+                                                
                         <div class="button-array">
                             <input type="button" value="1" id="button_one"/>
                             <input type="button" value="2" id="button_two"/>
@@ -32,14 +31,9 @@
                             <input type="button" value="." id="button_dot"/>
                             <input type="button" value="D" id="button_del"/>
                         </div>
-
-                      
-                      
                     </div>
                   </div>
                 <div class = "left-group">
-                    
-
                     <form id="confirm" method="POST" action="/confirm_data">
                         <input id="confirm_value" type="submit" value="Confirm Value">
                     </form>
@@ -61,7 +55,6 @@
                         <div class = "vessel-name-num">
                             <h1>{{num}}</h1>
                             <p><b>Vessel: {{selected_vessel}}</b></p>
-                            
                         </div>
                     </a>
                     {% if current_vessel_values %}
@@ -177,10 +170,6 @@
                 popup.style.display = 'none';
             }
         </script>
-
-        
-        {% endblock %}
-
-      
+        {% endblock %}      
     </body>
 </html>
