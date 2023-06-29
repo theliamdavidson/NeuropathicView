@@ -61,7 +61,7 @@
                     <a href="{{ url_for('delete_recent') }}">
                         <div class="num-display">
                             <p>PI Upper: <b>{{current_vessel_values[0]}}</b></p>
-                            <p>PI Lower: <b>{{current_vessel_values[1]}}</b></p>
+                            <p>PI Lower: <b></b>{{current_vessel_values[1]}}</b></p>
                             <p>VF Upper: <b>{{current_vessel_values[2]}}</b></p>
                             <p>VF Lower: <b>{{current_vessel_values[3]}}</b></p>
                         </div>
@@ -169,6 +169,36 @@
                 var popup = document.getElementById('popup');
                 popup.style.display = 'none';
             }
+            function checkValues(e) {
+                var numDisplay = document.querySelector(".num-display");
+                var currentVesselValues = Array.from(numDisplay.getElementsByTagName("b")).map(function(element) {
+                    return element.innerHTML;
+                });
+
+                var hasNoneValue = currentVesselValues.some(function(value) {
+                    return value === "None";
+                });
+
+                if (hasNoneValue) {
+                    e.preventDefault();
+
+                    var popup = confirm("Some values are None. Do you want to continue off the page?");
+
+                    if (popup) {
+                    // User selected to continue off the page
+                    // Perform necessary actions here
+                    } else {
+                    // User selected to return to the page
+                    // Perform necessary actions here
+                    }
+                }
+                }
+
+                // Attach the event listener to all <a href> elements
+                var links = document.getElementsByTagName("a");
+                for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener("click", checkValues);
+                }
         </script>
         {% endblock %}      
     </body>
