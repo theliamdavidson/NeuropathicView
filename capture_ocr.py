@@ -28,7 +28,8 @@ def find_all():
     eighthh = h//8
     halfh = h//2
     halfw = w//2
-    reduced_img = img1[eighthh:halfh, halfw:]
+    full = 618 #pixel count that hopefully chops off extra values, but no information
+    reduced_img = img1[eighthh:halfh, halfw:full]
     try:
         text = pytesseract.image_to_string(Image.fromarray(reduced_img))
     except:

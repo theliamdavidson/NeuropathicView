@@ -174,13 +174,13 @@
                 var currentVesselValues = Array.from(numDisplay.getElementsByTagName("b")).map(function(element) {
                     return element.innerHTML;
                 });
-
+                // checking to make sure that at least one if filled
                 var noneCount = currentVesselValues.reduce(function(count, value) {
                     return count + (value === "None" ? 1 : 0);
                 }, 0);
 
                 if (noneCount > 0 && noneCount < 4) {
-                    var popup = confirm("Some values are not None. Do you want to continue off the page?");
+                    var popup = confirm("There are some incomplete values. Do you want to continue off the page?");
 
                     if (!popup) {
                     e.preventDefault();
